@@ -3,13 +3,21 @@ import ReactDOM from 'react-dom';
 
 // write your Color component here
 const Color = (props) => {
+  console.log(props.color);
+  const color = props.color
+  const border = props.selectColor 
+  const selectedColor = props.selectedColor
+  console.log(selectedColor);
+  const border1 = selectedColor === color ? "selected" : ""
   return (
-    <div className = {props.color} onClick={() =>{
-      props.selectColor(props.color);
+   <div className = {`${color} ${border1}`} onClick={() =>{
+      border(color);
     }
     }/>
   )
 }
+
+
 const Picker = () => {
 
   const [selectedColor, setSelectedColor] = useState('');
@@ -25,9 +33,9 @@ const Picker = () => {
         <div className={selectedColor}>{selectedColor}</div>
       </div>
       <div id="colors-list">
-      <Color color = 'blue' selectColor={selectColor}/>
-      <Color color = 'black' selectColor={selectColor}/>
-      <Color color = 'violet' selectColor={selectColor}/>
+      <Color selectedColor = {selectedColor}color ='blue' selectColor={selectColor}/>
+      <Color selectedColor = {selectedColor}color ='black' selectColor={selectColor}/>
+      <Color selectedColor = {selectedColor}color ='violet' selectColor={selectColor}/>
       </div>
     </div>
   );
